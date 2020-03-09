@@ -104,9 +104,8 @@ export default class Main extends React.Component<{}, MainState> {
 
     toggleWindowVisibility = () => {
         const visible = this.state.showWindow
-        const nwWindow = getWindow()
 
-        if (visible) nwWindow.hide()
+        if (visible) this.getAfterSelectionAction()()
         else this.gotoHomeAndFocus()
 
         this.handleStateChange('showWindow', !visible)
