@@ -1,7 +1,10 @@
 <h2 align='center'>EmoPicker</h2>
 <p align='center'>
-    <a href='https://travis-ci.com/mrf345/EmoPicker'>
-        <img src='https://travis-ci.com/mrf345/EmoPicker.svg?branch=master'>
+    <a href='https://github.com/mrf345/EmoPicker/actions' target='_blank' style='margin-right: 2%'>
+        <img alt='Actions Status' src='https://github.com/mrf345/EmoPicker/workflows/CI/badge.svg' />
+    </a>
+    <a href="https://standardjs.com">
+        <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide">
     </a>
 </p>
 <h3 align='center'>Cross-platform desktop emojis picker</h3>
@@ -22,11 +25,11 @@
 - `cd EmoPicker`
 - `npm run setup` will install dependencies
 - `npm run start` will run it, but convert TypeScript first
-- `npm run quick-start` will run it and won't covert TypeScript **faster**
+- `npm run quick-start` will run it and won't covert TypeScript `(runs faster)`
 
 
 ##### With an executable:
 Find an executable that's suitable for your operating system:
 
 - [Github](https://github.com/mrf345/EmoPicker/releases)
-- [SourceForge](https://sourceforge.net/EmoPicker)
+- [SourceForge](https://sourceforge.net/projects/emopicker/)
