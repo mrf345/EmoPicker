@@ -1,0 +1,21 @@
+{
+  "name": "EmoPicker",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "setup": "npm i . && cd src/ && npm i .",
+    "start": "cd src/ && npm run build && nw .",
+    "quick-start": "cd src/ && nw .",
+    "build": "cd src/ && npm run build && cd .. && nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/",
+    "test": "cd src/ && npm test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "nw-builder": "^3.5.7"
+  },
+  "dependencies": {
+    "nw": "^0.44.3"
+  }
+}

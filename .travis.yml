@@ -1,0 +1,6 @@
+language: node_js
+node_js:
+  - 13.9.0
+install:
+  - cd src/ && npm i .
+script: npm test
