@@ -10,13 +10,13 @@
 
 <p align='center'>
     <img src='docs/screenshot_1.png' alt='select emoji screenshot' width='30%' />
-    <img src='docs/screenshot_1.png' alt='settings screenshot' width='30%' />
+    <img src='docs/screenshot_2.png' alt='settings screenshot' width='30%' />
 </p>
 
 
 <br />
 
-#### Setup
+### Setup
 ##### From the source:
 - `git clone https://github.com/mrf345/EmoPicker.git`
 - `cd EmoPicker`

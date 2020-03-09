@@ -1,0 +1,23 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1.1.0
+    - name: Install dependencies
+      run: |
+        cd ./src
+        npm i .
+    - name: Build
+      run: |
+        cd ./src
+        npm run build
+    - name: Run tests
+      run: |
+        npm test
