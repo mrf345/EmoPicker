@@ -1,3 +1,6 @@
+<p align='center'>
+    <img src='src/public/logo.png' alt='select emoji screenshot' width='15%' />
+</p>
 <h2 align='center'>EmoPicker</h2>
 <p align='center'>
     <a href='https://github.com/mrf345/EmoPicker/actions' target='_blank' style='margin-right: 2%'>
