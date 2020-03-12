@@ -44,10 +44,15 @@ input, select {
 }
 
 button {
+  margin-top: 1%;
   font-weight: bold;
   font-stretch: ultra-expanded;
   padding-bottom: 0.3%;
   padding-top: 0.3%;
+}
+
+a > button {
+  width: 100%;
 }
 
 .select-search-box__option {
@@ -74,4 +79,8 @@ button {
 
 .select-search-box__option--selected {
   background: gray;
+}
+
+.hidden {
+  display: none;
 }

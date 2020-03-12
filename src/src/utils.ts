@@ -3,7 +3,7 @@ interface parseClassesConfig {
 }
 
 
-export function registerShortcut(key:string, todo:Function) {
+export function registerShortcut(key:string, todo:Function):any {
     try {
         const shortcut = new window.nw.Shortcut({
             key: key,
@@ -11,12 +11,26 @@ export function registerShortcut(key:string, todo:Function) {
                 const value = localStorage.getItem('shortcut')
 
                 value?.toLowerCase() !== key.toLowerCase() && alert(`Shortcut Failure(${err})`)
-            }
-        })
+            }})
 
         window.nw.App.registerGlobalHotKey(shortcut)
         shortcut.on('active', todo)
+
+        return shortcut
     } catch(err) { alert(`Shortcut Failure(${err})`) }
+}
+
+
+export function unregisterShortcut(shortcut:any) {
+    window.nw.App.unregisterGlobalHotKey(shortcut)
+}
+
+
+export function displayInNewWindow(content:string, settings?:{}):Window {
+    const newWindow = window.nw.Window.open(`data:text/html,${content}`,
+                                            {height: 300, width: 800, ...settings})
+
+    return newWindow
 }
 
 
