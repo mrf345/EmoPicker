@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { ComponentClass } from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
+import {  HashRouter as Router, Route } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router'
 
 import './index.css'
 import app from '../package.json'
+import Navigation from './components/Navigation'
 import Search from './components/Search'
 import Settings from './components/Settings'
-import ToggleButton from './components/ToggleButton'
+import ErrorHandler from './components/ErrorHandler'
 import Constants from './constants'
-import { registerShortcut, storeObjectLocally, entitle, getWindow, getTray } from './utils'
+import {
+    registerShortcut, storeObjectLocally, entitle, getWindow, getTray,
+    unregisterShortcut } from './utils'
 
 
 declare global {
@@ -20,8 +25,7 @@ export interface CommonProps {
     [index:string]:any
     handleStateChange(key:string, value:any):any
     getAfterSelectionAction?():Function
-    searchValue?:string    
-    showSettings?:boolean
+    searchValue?:string
     showWindow?:boolean
     searchRef?:any
     afterSelection?:afterSelection
@@ -37,7 +41,6 @@ export interface CommonProps {
 interface MainState {
     [index:string]:any
     searchValue:string
-    showSettings:boolean
     settings: {
         [index:string]:any
         shortcut:string,
@@ -52,22 +55,23 @@ interface afterSelection {
         action:Function
         description:string
     }
-} 
+}
 
 
 export default class Main extends React.Component<{}, MainState> {
     afterSelection:afterSelection
     searchRef:any
     tray:any
+    shortcut:any
 
     constructor(props:{}) {
         super(props)
 
+        this.shortcut = undefined
         this.searchRef = React.createRef()
         this.tray = getTray({title: app.window.title,
                              icon: app.window.icon})
         this.state = {searchValue: '',
-                      showSettings: false,
                       showWindow: true,
                       settings: {shortcut: localStorage.getItem('shortcut') || Constants.DEFAULT_SHORT_CUT,
                                  backgroundColor: localStorage.getItem('backgroundColor') || Constants.DEFAULT_BACKGROUND,
@@ -96,10 +100,9 @@ export default class Main extends React.Component<{}, MainState> {
     gotoHomeAndFocus = () => {
         const nwWindow = getWindow()
 
-        this.handleStateChange('showSettings', false)
         nwWindow.show()
         nwWindow.focus()
-        this.searchRef.current.instanceRef.search.current.focus()
+        if (this.searchRef.current) this.searchRef.current.instanceRef.search.current.focus()
     }
 
     toggleWindowVisibility = () => {
@@ -112,8 +115,11 @@ export default class Main extends React.Component<{}, MainState> {
     }
 
     applySettings = (event?:any) => {
-        registerShortcut(entitle(this.state.settings.shortcut), this.toggleWindowVisibility)
         storeObjectLocally(this.state.settings)
+
+        if (this.shortcut) unregisterShortcut(this.shortcut)
+        this.shortcut = registerShortcut(entitle(this.state.settings.shortcut),
+                                         this.toggleWindowVisibility)
     }
 
     getAfterSelectionAction = ():Function => {
@@ -123,30 +129,39 @@ export default class Main extends React.Component<{}, MainState> {
     }
 
     render() {
-        const showSettings = this.state.showSettings
-        const afterSelection = this.state.afterSelection
+        const theme = {backgroundColor: this.state.settings.backgroundColor,
+                       color: this.state.settings.fontColor}
+        const commonProps = {handleStateChange: this.handleStateChange,
+                             settings: this.state.settings}
 
         return (
-            <div className="main" style={{backgroundColor: this.state.settings.backgroundColor,
-                                          color: this.state.settings.fontColor}}>
-                <div className="header">
-                    <ToggleButton label="Settings"
-                                  secondaryLabel="Go Back"
-                                  showSettings={showSettings}
-                                  handleStateChange={this.handleStateChange}/>
-                </div>
-                {showSettings
-                    ? <Settings settings={this.state.settings}
-                                searchRef={this.searchRef}
-                                afterSelection={this.afterSelection}
-                                applySettings={this.applySettings}
-                                handleStateChange={this.handleStateChange} />
-                    : <Search settings={this.state.settings}
-                              searchValue={this.state.searchValue}
-                              searchRef={this.searchRef}
-                              getAfterSelectionAction={this.getAfterSelectionAction}
-                              handleStateChange={this.handleStateChange} />}
-            </div>
+            <ErrorHandler>
+                <Router>
+                    <div className="main" style={theme}>
+                        <Navigation />
+                        <Route exact
+                               path="/"
+                               render={
+                                   (props:RouteComponentProps) => <Search
+                                        searchValue={this.state.searchValue}
+                                        searchRef={this.searchRef}
+                                        getAfterSelectionAction={this.getAfterSelectionAction}
+                                        {...commonProps}
+                                        {...props} />
+                               } />
+                        <Route exact
+                               path="/settings"
+                               render={
+                                   (props:RouteComponentProps) => <Settings
+                                        searchRef={this.searchRef}
+                                        afterSelection={this.afterSelection}
+                                        applySettings={this.applySettings}
+                                        {...commonProps}
+                                        {...props} />
+                               } />
+                    </div>
+                </Router>
+            </ErrorHandler>
         )
     }
 }

@@ -9,11 +9,28 @@ Object {
       style="background-color: rgb(40, 44, 52); color: rgb(255, 255, 255);"
     >
       <div
-        class="header"
+        class="navigation"
       >
-        <button>
-          Settings
-        </button>
+        <a
+          aria-current="page"
+          class="hidden"
+          href="#/"
+        >
+          <button
+            class=""
+          >
+            Go back
+          </button>
+        </a>
+        <a
+          href="#/settings"
+        >
+          <button
+            class=""
+          >
+            Settings
+          </button>
+        </a>
       </div>
       <div
         class="search"
@@ -12280,11 +12297,28 @@ Object {
         style="background-color: rgb(40, 44, 52); color: rgb(255, 255, 255);"
       >
         <div
-          class="header"
+          class="navigation"
         >
-          <button>
-            Settings
-          </button>
+          <a
+            aria-current="page"
+            class="hidden"
+            href="#/"
+          >
+            <button
+              class=""
+            >
+              Go back
+            </button>
+          </a>
+          <a
+            href="#/settings"
+          >
+            <button
+              class=""
+            >
+              Settings
+            </button>
+          </a>
         </div>
         <div
           class="search"
@@ -24552,11 +24586,28 @@ Object {
         style="background-color: rgb(40, 44, 52); color: rgb(255, 255, 255);"
       >
         <div
-          class="header"
+          class="navigation"
         >
-          <button>
-            Settings
-          </button>
+          <a
+            aria-current="page"
+            class="hidden"
+            href="#/"
+          >
+            <button
+              class=""
+            >
+              Go back
+            </button>
+          </a>
+          <a
+            href="#/settings"
+          >
+            <button
+              class=""
+            >
+              Settings
+            </button>
+          </a>
         </div>
         <div
           class="search"
@@ -36825,11 +36876,28 @@ Object {
       style="background-color: rgb(40, 44, 52); color: rgb(255, 255, 255);"
     >
       <div
-        class="header"
+        class="navigation"
       >
-        <button>
-          Settings
-        </button>
+        <a
+          aria-current="page"
+          class="hidden"
+          href="#/"
+        >
+          <button
+            class=""
+          >
+            Go back
+          </button>
+        </a>
+        <a
+          href="#/settings"
+        >
+          <button
+            class=""
+          >
+            Settings
+          </button>
+        </a>
       </div>
       <div
         class="search"
@@ -49154,11 +49222,28 @@ Object {
       style="background-color: rgb(40, 44, 52); color: rgb(255, 255, 255);"
     >
       <div
-        class="header"
+        class="navigation"
       >
-        <button>
-          Settings
-        </button>
+        <a
+          aria-current="page"
+          class="hidden"
+          href="#/"
+        >
+          <button
+            class=""
+          >
+            Go back
+          </button>
+        </a>
+        <a
+          href="#/settings"
+        >
+          <button
+            class=""
+          >
+            Settings
+          </button>
+        </a>
       </div>
       <div
         class="search"
@@ -61425,11 +61510,28 @@ Object {
         style="background-color: rgb(40, 44, 52); color: rgb(255, 255, 255);"
       >
         <div
-          class="header"
+          class="navigation"
         >
-          <button>
-            Settings
-          </button>
+          <a
+            aria-current="page"
+            class="hidden"
+            href="#/"
+          >
+            <button
+              class=""
+            >
+              Go back
+            </button>
+          </a>
+          <a
+            href="#/settings"
+          >
+            <button
+              class=""
+            >
+              Settings
+            </button>
+          </a>
         </div>
         <div
           class="search"
