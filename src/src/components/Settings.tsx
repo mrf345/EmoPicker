@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CommonProps } from '../index'
 import ActionButton from './ActionButton'
-import { entitle, randomize } from '../utils'
+import { entitle } from '../utils'
 
 
 interface SettingsProps extends CommonProps {
@@ -38,7 +38,7 @@ export default class Settings extends React.Component<SettingsProps> {
                             onChange={(e) => { this.props.handleStateChange('afterSelection', e.target.value) }}>
                         {Object.entries(this.props.afterSelection || {})
                                .map(([value, obj], i) => (
-                                    <option key={randomize(i)} value={value}>{obj.description}</option>))}
+                                    <option key={i.toString()} value={value}>{obj.description}</option>))}
                     </select>
                 </div>
                 <div>

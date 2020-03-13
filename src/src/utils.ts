@@ -52,15 +52,6 @@ export function parseClasses(toParse:parseClassesConfig = {},
 }
 
 
-export function randomize(token:number,
-                          from:number = 1,
-                          to:number =  Math.pow(10, 10)
-                         ):string {
-
-    return Math.floor(((Math.random() * to) + from) * token).toString()
-}
-
-
 export function entitle(untitled:string):string {
     return (untitled && `${untitled.charAt(0).toUpperCase()}${untitled.substr(1).toLowerCase()}`)
 }
