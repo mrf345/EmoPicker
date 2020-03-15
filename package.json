@@ -1,12 +1,12 @@
 {
   "name": "EmoPicker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "scripts": {
     "setup": "npm i . && cd src/ && npm i .",
     "start": "cd src/ && npm run build && nw .",
     "quick-start": "cd src/ && nw .",
-    "build": "cd src/ && npm run build && cd .. && nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/",
+    "build": "cd src/ && npm run build && cd .. && node build.js",
     "test": "cd src/ && npm test"
   },
   "keywords": [],
